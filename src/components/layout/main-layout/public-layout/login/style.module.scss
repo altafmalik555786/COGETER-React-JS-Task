@@ -1,0 +1,200 @@
+.mainLoginWrraper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  min-height: 100vh;
+  max-height: fit-content;
+  background-color: #1e1e27;
+
+  .mainLoginWrraperFluid {
+    height: 95vh;
+    width: 100%;
+
+    .imageSide {
+      height: 100%;
+      background-color: #2d2757;
+      border-radius: 20px 0px 0px 20px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      .logoTitleContainer {
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        img {
+          width: 100px;
+          margin: auto;
+        }
+
+        h2 {
+          color: white;
+          margin-top: 0;
+          font-size: 40px;
+          font-weight: 100;
+        }
+      }
+    }
+
+    .formSide {
+      display: inherit;
+      width: 60%;
+      height: 100%;
+      margin: auto;
+
+      .topBtnBar {
+        height: fit-content;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 40px;
+        align-items: center;
+        padding-right: 20px;
+
+        a {
+          color: #494468;
+        }
+      }
+
+      .formContainerWrapper {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 90%;
+
+        .formContainer {
+          h1,
+          h4 {
+            color: white;
+            letter-spacing: 0px;
+          }
+
+          .loginBtn {
+            width: 100%;
+            padding: 20px;
+          }
+
+          .LoginForm {
+            :global(.MuiOutlinedInput-input) {
+              &:focus {
+                border: 2px solid white !important;
+                z-index: 1;
+                border-radius: 6px;
+              }
+            }
+
+            .acountType {
+              label {
+                font-family: "Cairo" !important;
+                font-weight: 700;
+              }
+            }
+
+            .FormStyle {
+              padding-top: 10px;
+              margin: 5px 0;
+
+              span {
+                &.FormStyle {
+                  font-family: "Cairo" !important;
+                  color: white;
+                }
+              }
+
+              label {
+                font-family: "Cairo" !important;
+              }
+            }
+
+            .selectError {
+              color: #d32f2f;
+              font-weight: 400;
+              font-size: 0.75rem;
+              line-height: 1.66;
+            }
+
+            .password {
+              .eyeIcon {
+                position: absolute;
+                float: right;
+                right: 5px;
+                top: 25px;
+              }
+            }
+
+            .forgetPassword {
+              text-align: right;
+              margin: 15px 0px;
+              a {
+                color: #5d67f2;
+                &:hover {
+                  text-decoration: underline;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+
+          .aTagSignupContainer {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 50px;
+
+            a {
+              color: #494468;
+              span {
+                color: #5d67f2;
+                cursor: pointer;
+                text-align: center;
+                &:hover {
+                  text-decoration: underline;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    background-color: #1e1e27;
+    height: 100%;
+    padding: 20px 0px;
+
+    .mainLoginWrraperFluid {
+      height: 100%;
+
+      .formSide {
+        display: inherit;
+        width: 90%;
+        height: max-content;
+        margin: auto;
+
+        .topBtnBar {
+          height: fit-content;
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          gap: 10px;
+          align-items: center;
+          padding-top: 20px;
+        }
+      }
+    }
+  }
+}
+
+input,
+select {
+  color: #fff !important;
+  -webkit-text-fill-color: #fff !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+}

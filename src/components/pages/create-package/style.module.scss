@@ -1,0 +1,173 @@
+.createPackageContainer {
+  padding: 50px 0px;
+  .createPackageContentFluid {
+    width: 80%;
+    margin: auto;
+    background-color: #242733;
+    min-height: 100vh;
+    padding: 80px 0px;
+
+    /////// Main Content Container Start ///////
+    .createPackageInnerContentFluid {
+      width: 80%;
+      margin: auto;
+
+      .antDStepper {
+        :global(.ant-steps-item) {
+          padding-inline-start: 0px;
+          :global(.ant-steps-item-container) {
+            display: flex;
+            flex-direction: column;
+
+            :global(.ant-steps-item-title) {
+              color: #6e6e6e;
+
+              &::after {
+                border: 1px solid #6e6e6e;
+                margin: -32px;
+              }
+            }
+
+            :global(.ant-steps-item-description) {
+              color: white;
+            }
+          }
+        }
+
+        :global(.ant-steps-item-active) {
+          :global(.ant-steps-item-icon) {
+            background-color: transparent;
+            border-color: #6e6e6e;
+            span {
+              background-color: #8c2bfa;
+              color: #8c2bfa;
+              border-radius: 50px;
+              position: absolute;
+              width: 25px;
+              left: 3px;
+              height: 25px;
+              top: 3px;
+            }
+          }
+        }
+
+        :global(.ant-steps-item-wait) {
+          :global(.ant-steps-item-icon) {
+            background-color: transparent;
+            padding: 2px;
+            border-color: #6e6e6e;
+            span {
+              color: transparent;
+              position: absolute;
+              top: 9px;
+              left: 12px;
+            }
+          }
+        }
+
+        :global(.ant-steps-item-finish) {
+          :global(.ant-steps-item-tail) {
+            &::after {
+              display: none;
+            }
+          }
+        }
+
+        @media screen and (max-width: 780px) {
+          width: 128px;
+          margin: auto;
+
+          :global(.ant-steps-item) {
+            :global(.ant-steps-item-container) {
+              text-align: center;
+              justify-content: center;
+              align-items: center;
+            }
+          }
+
+          :global(.ant-steps-item-active) {
+            :global(.ant-steps-item-icon) {
+              span {
+                left: 43px;
+              }
+            }
+          }
+        }
+      }
+
+      .formContainer {
+        :global(.MuiOutlinedInput-input) {
+            &:focus {
+              border: 4px solid #373743;
+              z-index: 1;
+              border-radius: 12px;
+            }
+        }
+
+        padding-top: 50px;
+        .createPackageForm {
+          .rightText {
+            position: absolute;
+            right: 0;
+            top: 40px;
+            right: 35px;
+            color: white;
+          }
+
+          :global(.MuiFormControl-root) {
+            margin: 10px 0px;
+          }
+
+          .locationLine {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0px;
+
+            .locationText {
+              color: white;
+            }
+
+            .horizontalLine {
+              border: 1px solid #6e6e6e;
+              width: 100%;
+            }
+
+            .choosefromMap {
+              color: #6d8bfb;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              margin-left: 10px;
+              justify-content: flex-end;
+              gap: 10px;
+            }
+          }
+
+          .footerBtnsContainer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-top: 60px;
+
+            .saveAndNextBtn {
+              width: 80%;
+              padding: 20px;
+              margin: auto;
+            }
+
+            .cancelBtnContainer {
+              .cancelBtn {
+                color: #847fff;
+                cursor: pointer;
+              }
+            }
+          }
+        }
+      }
+    }
+    /////// Main Content Container End ///////
+  }
+}

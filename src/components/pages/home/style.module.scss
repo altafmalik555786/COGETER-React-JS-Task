@@ -1,0 +1,337 @@
+.homePagePageContainer {
+  width: 100%;
+  min-height: 72vh;
+  background-color: #161820;
+  .todaySessionWrapper {
+    background-color: #30313c;
+    background-image: url("../../../assets/icons/session-bg.svg");
+    background-repeat: no-repeat;
+    background-position: right;
+    padding: 40px;
+    padding-left: 0px;
+    display: flex;
+    justify-content: center;
+    h1 {
+      width: 80%;
+      color: #ffff;
+      font-weight: bold;
+      font-size: 25px;
+    }
+  }
+
+  .eventsWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+    .eventBoxWrapper {
+      display: flex;
+      width: 80%;
+      margin: auto;
+      gap: 20px;
+      .eventBox {
+        background-color: transparent;
+        border-radius: 20px;
+        border: 1px solid white;
+        cursor: pointer;
+        color: white;
+        font-weight: bold;
+        padding: 10px 25px;
+        max-width: 120px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: 0.5s;
+
+        &:hover {
+          border-color: green;
+          color: #45BDFB;
+        }
+
+      }
+      .activeEventBox {
+        background: transparent linear-gradient(270deg, #45BDFB 0%, #7483FB 43%, #8C66FB 67%, #AD3EFB 93%, #AE3DFB 100%) 0% 0% no-repeat padding-box;        font-weight: bold;
+        border-radius: 20px;
+        color: white;
+        padding: 10px 25px;
+        max-width: 120px;
+        display: flex;
+        cursor: pointer;
+        justify-content: center;
+        align-items: center;
+        transition: 1s;
+
+        &:hover {
+          border-color: green;
+          color: #30313c;
+          background: transparent linear-gradient(270deg, #d1cbad 0%, #b2c482 43%, #cfa542 67%, #da7319 93%, #ed5012 100%) 0% 0% no-repeat padding-box;        font-weight: bold;
+        }
+
+      }
+    }
+  }
+
+  .cardsMainContainer {
+    display: flex;
+    justify-content: center;
+    .cardsWrapper {
+      width: 80%;
+      :global(.ant-row) {
+        margin-bottom: 20px;
+      }
+      .viewAllText {
+        color: #6D8BFB;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  .packageContainer {
+    display: flex;
+    justify-content: center;
+    .packageWrapper {
+      width: 80%;
+
+      .packageTitleContainer {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        margin: 25px 0px;
+      }
+
+      h1 {
+        color: #ffff;
+      }
+      .plusBtn {
+        display: flex;
+        justify-content: flex-end;
+        span {
+          width: 40px;
+          font-size: 30px;
+          color: #ffff;
+          font-weight: 600;
+          height: 40px;
+          border-radius: 8px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #5e69f7;
+        }
+      }
+      .viewAllText {
+        color: #6D8BFB;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .earningBtnWrapper {
+        display: flex;
+        justify-content: flex-end;
+        button {
+          background: #5e69f7;
+          padding: 20px;
+          color: #ffff;
+        }
+      }
+    }
+  }
+
+  .earningContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+    .earningWrapper {
+      margin-bottom: 40px;
+      width: 80%;
+      h1 {
+        color: #ffff;
+      }
+      .viewAllText {
+        color: #6D8BFB;
+        cursor: pointer;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+      .earningBtnWrapper {
+        display: flex;
+        justify-content: flex-end;
+        button {
+          background: #5e69f7;
+          padding: 20px;
+          color: #ffff;
+        }
+      }
+    }
+    .earningCardsContainer {
+      background-color: #30313c;
+      padding: 20px;
+      .firstColContainer {
+        .firstColWrapper {
+          background-color: #1e202a;
+          padding: 10px;
+          .incomeText {
+            color: #fff;
+            font-size: 14px;
+            opacity: 50%;
+            margin-bottom: 0px;
+          }
+          .priceWrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            span {
+              color: #fff;
+              color: #5e69f7;
+            }
+          }
+          .monthText {
+            color: #fff;
+            opacity: 50%;
+            margin-top: -12px;
+            font-size: 11px;
+          }
+        }
+      }
+      .secondColContainer {
+        .secondColWrapper {
+          background-color: #1e202a;
+          height: 100%;
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 20px;
+          align-items: center;
+          flex-wrap: wrap;
+          p {
+            color: #fff;
+          }
+          .imgWrapper {
+            background-color: #5e69f7;
+            border-radius: 50px;
+            padding: 8px;
+            margin-right: 20px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+          
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+          margin-top: 20px;
+        }
+      }
+      .secondRowfirstColContainer {
+        padding: 10px;
+        .secondRowfirstColWrapper {
+          background-color: #1e202a;
+          height: 100%;
+          padding: 10px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+          .secondRowfirstColImgWrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+
+            p {
+              color: #fff;
+            }
+            img {
+              margin-right: 20px;
+            }
+          }
+          .viewAllText {
+            color: #6D8BFB;
+          }
+        }
+      }
+    }
+  }
+
+  .inviteClientContainer {
+    display: flex;
+    justify-content: center;
+    .inviteClientWrapper {
+      margin-bottom: 40px;
+      width: 80%;
+      .clientCardsContainer {
+        background-color: #30313c;
+        margin-bottom: 40px;
+
+        padding: 40px;
+        h1 {
+          color: #fff;
+        }
+        h4 {
+          color: #fff;
+        }
+        .clientInputWrapper {
+          display: flex;
+          align-items: center;
+          input {
+            max-width: 400px;
+            background-color: #5e69f7;
+          }
+          button {
+            margin-left: 20px;
+            padding: 22px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #5e69f7;
+            color: #fff;
+            font-size: 14px;
+          }
+        }
+        .imgWrapper {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100%;
+          img {
+            height: 80px;
+            width: 80px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 620px) {
+    .eventsWrapper {
+      .eventBoxWrapper {
+        flex-direction: column;
+
+        .eventBox {
+          max-width: 100%;
+        }
+        .activeEventBox {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+
+.animatedCard {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.animatedCard.show {
+  opacity: 1;
+  transform: translateY(0);
+}

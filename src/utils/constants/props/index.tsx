@@ -1,0 +1,21 @@
+export const LOWER_SUBMIT = "submit";
+export const LOWER_NUMBER = "number"
+export const LOWER_FILLED = "filled";
+export const CAMEL_INPUT_GREY_LAYOUT = "inputGreyLayout"
+export const LOWER_OUTLINED = "outlined";
+export const LOWER_VERTICAL = "vertical";
+export const LOWER_HORIZONTAL = "horizontal";
+export const LOWER_SMALL = "small";
+export const LOWER_LARGE = "large";
+export const LOWER_MIDDLE = "middle";
+export const LOWER_TEXT = "text";
+export const LOWER_PASSWORD = "password";
+export const LOWER_EMAIL = "email";
+export const LOWER_TITLE = "title";
+export const LOWER_DESCRIPTION = "description";
+export const CAMEL_LOCATION_TYPE = "locationType";
+export const LOWER_COUNTRY = "country"
+export const LOWER_CITY = "city"
+export const LOWER_AREA = "area"
+export const LOWER_VALIDITY = "validity"
+

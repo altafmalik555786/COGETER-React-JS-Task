@@ -1,0 +1,107 @@
+.commonInputStyle {
+  :global(.MuiInputLabel-root) {
+    color: white;
+    margin-bottom: 6px;
+    padding: 0px 5px;
+    background-color: #1e1e27;
+    z-index: 2;
+    font-family: "Cairo";
+  }
+
+  :global(.MuiInputLabel-root.Mui-focused) {
+    color: white;
+    background-color: #1e1e27;
+    font-size: 18px;
+    &:focus {
+      border: 2px solid white !important;
+      z-index: 2;
+    }
+  }
+
+  :global(.MuiInputBase-root) {
+    border: 1px solid white;
+    border-radius: 10px;
+  }
+
+  :global(.MuiInputBase-multiline) {
+    color: white;
+    padding: inherit;
+  }
+
+  :global(.MuiInputBase-inputMultiline) {
+    height: 50px;
+    padding: 20px;
+  }
+
+  :global(.MuiInputBase-multiline) {
+    color: white;
+  }
+
+  :global(.MuiInputBase-root.Mui-focused) {
+    border: 1px solid #1e1e27;
+  }
+
+  :global(.MuiInput-input) {
+    padding-top: 10px;
+    background-color: transparent;
+    color: #6d8bfb !important;
+    padding-bottom: 6px;
+    margin-top: 8px;
+    border: 1px solid white;
+  }
+
+  :global(.MuiInput-root.Mui-error:after) {
+    border-bottom-color: #d32f2f;
+  }
+}
+
+///////////// greyLayout Input ///////////
+
+.greyLayout {
+  :global(.MuiInputLabel-root) {
+    color: white;
+    margin-bottom: 6px;
+    padding: 0px 5px;
+    background-color: #242733;
+    font-family: "Cairo";
+    z-index: 2;
+  }
+
+  :global(.MuiInputLabel-root.Mui-focused) {
+    color: white;
+    background-color: #242733;
+    font-size: 18px;
+  }
+
+  :global(.MuiInputBase-root) {
+    border: 1px solid #6e6e6e;
+    border-radius: 15px;
+  }
+
+  :global(.MuiInputBase-multiline) {
+    color: white;
+    padding: inherit;
+  }
+
+  :global(.MuiInputBase-inputMultiline) {
+    height: 50px;
+    padding: 20px;
+  }
+
+  :global(.MuiInputBase-root.Mui-focused) {
+    border: 1px solid #1e1e27;
+  }
+
+  :global(.MuiInput-root.Mui-error:after) {
+    border-bottom-color: #d32f2f;
+  }
+}
+
+//////// always put in your under form style div /////////
+// :global(.MuiOutlinedInput-input) {
+//   &:focus {
+//     border: 2px solid white !important;
+//     z-index: 1;
+//     border-radius: 6px;
+//   }
+// }

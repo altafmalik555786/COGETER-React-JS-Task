@@ -1,0 +1,399 @@
+.topHeaderBar {
+  display: flex;
+  position: fixed;
+  z-index: 4;
+  width: 100%;
+  padding: 1px 0px;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #161820;
+
+  .headerContainer {
+    min-height: 50px;
+    background-color: #161820;
+    color: #000000;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 80%;
+    margin: auto;
+
+    .headerMenuContainer {
+      display: inline;
+      float: left;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      .welcomeText {
+        img {
+          height: 48px;
+          margin-top: 8px;
+          width: 48px;
+        }
+      }
+    }
+
+    .menuHeader {
+      padding-left: 10px;
+      background-color: #161820;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+
+      :global(.ant-menu-item) {
+        width: auto;
+        margin: 5px 5px;
+        padding: 0px 16px;
+        font-size: 16px !important;
+        font-weight: 500;
+        color: #5d5d5e;
+
+        &::after {
+          border: none;
+        }
+      }
+      :global(.ant-menu-submenu-selected ){
+       :global(.ant-menu-submenu-title) {
+        color: #fff ;
+       
+      }
+      &::after{
+        border-bottom-width: 2px;
+        border-bottom-color: #fff;
+      }
+      }
+     
+          // :global(.ant-menu-submenu-title){
+          // color: green !important;
+          // }
+      :global(.ant-menu-item-selected) {
+        font-family: "Inter";
+        font-size: 16px !important;
+        font-weight: 600;
+        text-align: left;
+        color: white;
+        padding: 0px 16px;
+        border-radius: 5px;
+
+        &:hover {
+          color: #5d5d5e;
+        }
+      }
+
+      :global(.ant-menu-submenu) {
+        color: #5d5d5e;
+      }
+
+      :global(.ant-menu-submenu-selected) {
+        color: white;
+      }
+
+      :global(.ant-menu-submenu-active) {
+        :global(.ant-menu-submenu-title) {
+          color: white;
+        }
+        &::after {
+          border-bottom-color: white !important;
+        }
+      }
+    }
+
+    .rightMenuHeader {
+      display: inline;
+      float: right;
+      list-style: none;
+
+      .userProfileDropDownContainer {
+        margin-right: 24px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+
+        .userProfileDropDownWrapper {
+          display: flex;
+          flex-direction: row;
+          gap: 24px;
+          align-items: center;
+
+          .billingInfoImg {
+            height: 40px;
+            width: 160px;
+            cursor: pointer;
+          }
+          .billingInfo {
+            height: 40px;
+            background: #ffcd7c;
+            box-shadow: 0px 1px 2px rgba(16, 24, 40, 0.04);
+            border-radius: 5px;
+            font-family: "Inter";
+            font-style: normal;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 20px;
+            color: #2e2e2e;
+          }
+
+          .profileUserNameText {
+            color: #000000;
+            font-size: 20px;
+            font-weight: 500;
+          }
+
+          .profileUserNameText:hover {
+            color: #000000;
+          }
+
+          .spaceUserProfile {
+            display: flex;
+
+            img {
+              margin-top: 6px;
+              width: 52px;
+              height: 52px;
+              border-radius: 50%;
+            }
+          }
+        }
+
+        .betIconHeader {
+          color: white;
+          cursor: pointer;
+        }
+
+        .switchToTraining {
+          padding: 25px;
+        }
+      }
+    }
+
+    .headerMenuContainer {
+      .menuOutlinedIcon {
+        display: none;
+      }
+    }
+
+    @media screen and (max-width: 940px) {
+      justify-content: left;
+      height: auto;
+
+      .menuHeader {
+        position: absolute;
+        left: 0;
+        top: 50px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .headerMenuContainer {
+        .menuOutlinedIcon {
+          display: block;
+          position: absolute;
+          font-size: 25px;
+          margin: 7px 20px;
+          color: white;
+        }
+
+        .welcomeText {
+          img {
+            position: absolute;
+            left: 5px;
+            top: 0px;
+          }
+        }
+      }
+
+      .rightMenuHeader {
+        position: absolute;
+        right: 0;
+        top: -7px;
+        img {
+          width: 40px;
+        }
+      }
+    }
+
+    @media screen and (max-width: 425px) {
+      width: 100%;
+
+      .menuHeader {
+        display: block;
+        margin-top: 1px;
+        width: 100%;
+        height: auto;
+        padding: 20px;
+
+        li {
+          width: 100%;
+          display: block;
+          border: 1px solid #4f59c8;
+          text-align: center;
+        }
+        :global(.ant-menu-item-selected) {
+          text-align: center;
+          color: #5d5d5e;
+        }
+        :global(.ant-menu-submenu) {
+          margin: 5px;
+          width: 97%;
+          display: block;
+
+          :global(.ant-menu-submenu-title) {
+            padding: 0px;
+          }
+        }
+      }
+
+      .headerMenuContainer {
+        .menuOutlinedIcon {
+          position: absolute;
+          margin-left: 60px;
+        }
+      }
+
+      .rightMenuHeader {
+        padding-left: 0px;
+        .userProfileDropDownContainer {
+          gap: 5px;
+          margin-right: 5px;
+
+          .switchToTraining {
+            padding: 10px;
+          }
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 940px) {
+    padding: 8px 0px;
+    width: 100%;
+  }
+}
+
+.profileDropDonwMenu {
+  background-color: #2d303d;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding-bottom: 15px;
+  padding-right: 10px;
+  padding-left: 10px;
+
+  .userData {
+    padding: 18px 18px;
+    font-size: 20px;
+    border-bottom: 1px solid #dde2e4;
+    margin-top: 18px;
+
+    b {
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25px;
+      color: white;
+    }
+
+    p {
+      font-family: "Inter";
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      margin-top: -5px;
+      margin-bottom: 0;
+      font-size: 20px;
+      line-height: 20px;
+      color: white;
+    }
+  }
+
+  :global(.ant-dropdown-menu) {
+    box-shadow: none;
+    padding: 0px 9px;
+    font-family: "Inter";
+    margin-top: 10px;
+    background-color: #2d303d;
+  }
+
+  :global(.ant-dropdown-menu-item) {
+    span {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 25px;
+      color: white;
+      margin-top: 10px;
+    }
+  }
+
+  .itemWithImgIcon {
+    span {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  :global(.ant-menu-item) {
+    width: auto;
+    margin: 5px 5px;
+    padding: 0px 16px;
+    font-size: 16px !important;
+    font-weight: 500;
+    color: #5d5d5e;
+
+    &::after {
+      border: none;
+    }
+  }
+
+  :global(.ant-menu-item-selected) {
+    font-family: "Inter";
+    font-size: 16px !important;
+    font-weight: 600;
+    text-align: left;
+    color: white;
+    padding: 0px 16px;
+    border-radius: 5px;
+
+    &:hover {
+      color: #5d5d5e;
+    }
+  }
+
+  :global(.ant-menu-submenu) {
+    color: #5d5d5e;
+  }
+
+  :global(.ant-menu-submenu-selected) {
+    color: white;
+  }
+
+  :global(.ant-menu-submenu-active) {
+    :global(.ant-menu-submenu-title) {
+      color: white;
+    }
+    &::after {
+      border-bottom-color: white !important;
+    }
+  }
+}
+
+:global(.ant-menu-submenu-popup) {
+  padding: 20px 5px;
+  background-color: #2d303d;
+
+  :global(.ant-menu-sub) {
+    background-color: #2d303d !important;
+    color: white;
+    box-shadow: none;
+
+    :global(.ant-menu-item-selected) {
+      color: black;
+    }
+  }
+}

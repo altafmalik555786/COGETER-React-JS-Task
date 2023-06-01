@@ -1,0 +1,1 @@
+export const DONT_HAVE_AN_ACCOUNT_QUESTION_TEXT = "Don't have an account?"
