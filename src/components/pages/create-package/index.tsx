@@ -69,7 +69,9 @@ const CreatePackage = observer(() => {
   const { width } = useWindowSize();
   const [formValues, setFormValues] = useState(defaultValues);
   const [errors, setErrors] = useState(initialServerError);
-  const [value, setValue] = useState(1);
+  const [categoriesValue, setCategoriesValue] = useState(null);
+  const [currentCategoriesValue, setCurrentCategoriesValue] =
+    useState("Category");
 
   const {
     packages: {
@@ -169,8 +171,6 @@ const CreatePackage = observer(() => {
       [name]: value,
     });
   };
-
-  console.log("formValues", formValues);
 
   const coachingTypeList = [
     {
@@ -310,15 +310,19 @@ const CreatePackage = observer(() => {
                   </Row>
                 </Col>
 
-                <Col md={12} sm={24} xs={24}>
+                <Col className={style.leftForm} md={12} sm={24} xs={24}>
                   <FormControl fullWidth>
+                    <span className={style.categoriesValue}>
+                      {currentCategoriesValue}
+                    </span>
+
                     <TextField
                       select
                       fullWidth
                       name="categoryId"
                       label="Category"
-                      defaultValue={value}
-                      value={value}
+                      // defaultValue={currentCategoriesValue}
+                      value={currentCategoriesValue}
                       className={outLinedStyle.greyLayout}
                     >
                       <div className={style.selectBoxPopupCategories}>
@@ -328,43 +332,54 @@ const CreatePackage = observer(() => {
                           </div>
                         )) || (
                             <Row>
-                              <Col span={24} >
-                              <TextField
-                                id="outlined-basic"
-                                label="Search"
-                                fullWidth
-                                className={style.searchInput}
-                                variant="outlined"
-                              />
+                              <Col span={24}>
+                                <TextField
+                                  id="outlined-basic"
+                                  label="Search"
+                                  fullWidth
+                                  className={style.searchInput}
+                                  variant="outlined"
+                                />
                               </Col>
-                              <Col span={24} >
+                              <Col span={24}>
+                                <Radio.Group
+                                  onChange={(e) => {
+                                    const event = {
+                                      target: {
+                                        name: "categoryId",
+                                        value: e.target.value,
+                                      },
+                                    };
+                                    setCategoriesValue(e.target.value);
 
-                              <Radio.Group
-                                onChange={(e) => {
-                                  const event = {
-                                    target: {
-                                      name: "categoryId",
-                                      value: e.target.value,
-                                    },
-                                  };
-                                  setValue(e.target.value);
-                                  handleInputChange(event);
-                                  setErrors({ ...errors, ...{ validity: [] } });
-                                }}
-                                value={value}
-                              >
-                                <Space direction="vertical">
-                                  {getCategoriesData?.length > 0 &&
-                                    getCategoriesData?.map((option) => (
-                                      <Radio value={option?.id}>
-                                        {" "}
-                                        {renderItemDataOrEmptyNull(
-                                          option?.title
-                                        )}{" "}
-                                      </Radio>
-                                    ))}
-                                </Space>
-                              </Radio.Group>
+                                    handleInputChange(event);
+                                    setErrors({
+                                      ...errors,
+                                      ...{ validity: [] },
+                                    });
+                                  }}
+                                  value={categoriesValue}
+                                >
+                                  <Space direction="vertical">
+                                    {getCategoriesData?.length > 0 &&
+                                      getCategoriesData?.map((option) => (
+                                        <div
+                                          onClick={() =>
+                                            setCurrentCategoriesValue(
+                                              option?.title
+                                            )
+                                          }
+                                        >
+                                          <Radio value={option?.id}>
+                                            {" "}
+                                            {renderItemDataOrEmptyNull(
+                                              option?.title
+                                            )}{" "}
+                                          </Radio>
+                                        </div>
+                                      ))}
+                                  </Space>
+                                </Radio.Group>
                               </Col>
                             </Row>
                           ) || (
@@ -397,13 +412,11 @@ const CreatePackage = observer(() => {
                         setErrors({ ...errors, ...{ validity: [] } });
                       }}
                     >
-                      <div className={style.selectBoxPopup}>
-                        {coachingTypeList.map((option) => (
-                          <MenuItem key={option.value} value={option.value}>
-                            {option.label}
-                          </MenuItem>
-                        ))}
-                      </div>
+                      {coachingTypeList.map((option) => (
+                        <MenuItem key={option.value} value={option.value}>
+                          {option.label}
+                        </MenuItem>
+                      ))}
                     </TextField>
                   </FormControl>
                 </Col>
