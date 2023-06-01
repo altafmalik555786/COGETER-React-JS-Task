@@ -69,8 +69,7 @@ const CreatePackage = observer(() => {
   const [formValues, setFormValues] = useState(defaultValues);
   const [errors, setErrors] = useState(initialServerError);
   const [categoriesValue, setCategoriesValue] = useState(null);
-  const [currentCategoriesValue, setCurrentCategoriesValue] =
-    useState("");
+  const [currentCategoriesValue, setCurrentCategoriesValue] = useState("");
 
   const {
     packages: {
@@ -224,13 +223,17 @@ const CreatePackage = observer(() => {
               <Row gutter={40}>
                 <Col md={12} sm={24} xs={24}>
                   <Row>
-                    <Col span={24}>
+                    <Col
+                      onClick={() => {
+                        setErrors({ ...errors, ...{ title: [] } });
+                      }}
+                      span={24}
+                    >
                       <FormInputText
                         className={style.FormStyle}
                         style={{ position: "relative" }}
                         onValueChange={(e) => {
                           handleInputChange(e);
-                          setErrors({ ...errors, ...{ title: [] } });
                         }}
                         value={formValues.title}
                         name={LOWER_TITLE}
@@ -268,12 +271,14 @@ const CreatePackage = observer(() => {
                         style={{ position: "relative" }}
                         onValueChange={(e) => {
                           handleInputChange(e);
-                          setErrors({ ...errors, ...{ noSessions: [] } });
                         }}
                         value={formValues.noSessions}
                         name={"noSessions"}
                         label={"No. of Sessions"}
                         variant={LOWER_OUTLINED}
+                        onClick={() => {
+                          setErrors({ ...errors, ...{ noSessions: [] } });
+                        }}
                         type={LOWER_NUMBER}
                         colorVariant={CAMEL_INPUT_GREY_LAYOUT}
                         control={control}
@@ -320,7 +325,6 @@ const CreatePackage = observer(() => {
                       fullWidth
                       name="categoryId"
                       label="Category"
-                      // defaultValue={currentCategoriesValue}
                       value={currentCategoriesValue}
                       className={outLinedStyle.greyLayout}
                     >
@@ -350,7 +354,6 @@ const CreatePackage = observer(() => {
                                       },
                                     };
                                     setCategoriesValue(e.target.value);
-
                                     handleInputChange(event);
                                     setErrors({
                                       ...errors,
@@ -408,7 +411,6 @@ const CreatePackage = observer(() => {
                       value={formValues?.coachingType}
                       onChange={(e) => {
                         handleInputChange(e);
-                        setErrors({ ...errors, ...{ validity: [] } });
                       }}
                     >
                       {coachingTypeList.map((option) => (
@@ -425,7 +427,6 @@ const CreatePackage = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ locationType: [] } });
                     }}
                     value={formValues.locationType}
                     name={CAMEL_LOCATION_TYPE}
@@ -461,7 +462,6 @@ const CreatePackage = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ country: [] } });
                     }}
                     value={formValues?.country}
                     name={LOWER_COUNTRY}
@@ -479,7 +479,6 @@ const CreatePackage = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ city: [] } });
                     }}
                     value={formValues.city}
                     name={LOWER_CITY}
@@ -497,7 +496,6 @@ const CreatePackage = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ area: [] } });
                     }}
                     value={formValues.area}
                     name={LOWER_AREA}
@@ -517,7 +515,6 @@ const CreatePackage = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ addressLine: [] } });
                     }}
                     value={formValues.addressLine}
                     name={"addressLine"}

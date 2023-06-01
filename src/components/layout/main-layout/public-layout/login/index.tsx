@@ -126,10 +126,12 @@ const Login = observer(() => {
                     style={{ position: "relative" }}
                     onValueChange={(e) => {
                       handleInputChange(e);
-                      setErrors({ ...errors, ...{ email: [] } });
                     }}
                     value={formValues.email}
                     name={LOWER_EMAIL}
+                    onClick={() => {
+                      setErrors({ ...errors, ...{ email: [] } });
+                    }}
                     label={"Email"}
                     control={control}
                     variant={LOWER_OUTLINED}
@@ -145,10 +147,12 @@ const Login = observer(() => {
                           style={{ position: "relative" }}
                           onValueChange={(e) => {
                             handleInputChange(e);
-                            setErrors({ ...errors, ...{ password: [] } });
                           }}
                           type={passwordType}
                           name={LOWER_PASSWORD}
+                          onClick={() => {
+                            setErrors({ ...errors, ...{ password: [] } });
+                          }}
                           label={"Password"}
                           variant={LOWER_OUTLINED}
                           control={control}
