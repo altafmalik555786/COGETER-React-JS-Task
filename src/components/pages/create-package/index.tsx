@@ -1,8 +1,7 @@
-import { Button, Col, Radio, Row, Space, Spin, Steps } from "antd";
+import { Col, Radio, Row, Space, Spin, Steps } from "antd";
 import { memo, useEffect, useState } from "react";
 import style from "./style.module.scss";
 import useWindowSize from "@utils/hooks/useWindowSize";
-import classNames from "classnames";
 
 import {
   CAMEL_INPUT_GREY_LAYOUT,
@@ -71,7 +70,7 @@ const CreatePackage = observer(() => {
   const [errors, setErrors] = useState(initialServerError);
   const [categoriesValue, setCategoriesValue] = useState(null);
   const [currentCategoriesValue, setCurrentCategoriesValue] =
-    useState("Category");
+    useState("");
 
   const {
     packages: {
