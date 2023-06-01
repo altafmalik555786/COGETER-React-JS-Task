@@ -202,7 +202,7 @@
           img {
             position: absolute;
             left: 5px;
-            top: 0px;
+            top: 5px;
           }
         }
       }
@@ -270,7 +270,7 @@
   }
 
   @media screen and (max-width: 940px) {
-    padding: 8px 0px;
+    padding: 12px 0px;
     width: 100%;
   }
 }

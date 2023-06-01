@@ -1,7 +1,9 @@
-import { Button, Col, Row, Steps } from "antd";
+import { Button, Col, Radio, Row, Space, Spin, Steps } from "antd";
 import { memo, useEffect, useState } from "react";
 import style from "./style.module.scss";
 import useWindowSize from "@utils/hooks/useWindowSize";
+import classNames from "classnames";
+
 import {
   CAMEL_INPUT_GREY_LAYOUT,
   CAMEL_LOCATION_TYPE,
@@ -27,6 +29,9 @@ import { constImages } from "@utils/images";
 import { useStore } from "@stores/root-store";
 import { useNavigate } from "react-router-dom";
 import { constRoute } from "@utils/route";
+import { FormControl, MenuItem, TextField } from "@mui/material";
+import outLinedStyle from "@commonComponents/form-input-text/style.module.scss";
+import { renderItemDataOrEmptyNull } from "@utils/common-functions";
 
 const defaultValues = {
   title: "",
@@ -35,6 +40,8 @@ const defaultValues = {
   noSessions: "",
   validity: "",
   country: "",
+  coachingType: "",
+  category: "",
   city: "",
   area: "",
   addressLine: "",
@@ -46,6 +53,8 @@ const initialServerError = {
   description: [],
   noSessions: [],
   validity: [],
+  coachingType: [],
+  category: [],
   country: [],
   city: [],
   area: [],
@@ -60,10 +69,23 @@ const CreatePackage = observer(() => {
   const { width } = useWindowSize();
   const [formValues, setFormValues] = useState(defaultValues);
   const [errors, setErrors] = useState(initialServerError);
+  const [value, setValue] = useState(1);
 
   const {
-    packages: { createPackages, isLoadingCreatingPackages },
+    packages: {
+      createPackages,
+      isLoadingCreatingPackages,
+      loadCategories,
+      getCategoriesData,
+      isLoadingGettingCategories,
+    },
   } = useStore(null);
+
+  useEffect(() => {
+    if (getCategoriesData === null) {
+      loadCategories();
+    }
+  }, []);
 
   const onChange = (value: number) => {
     setCurrent(value);
@@ -81,7 +103,7 @@ const CreatePackage = observer(() => {
       costPerSession: 100,
       validity: formValues?.validity,
       discount: 0,
-      coachingType: "Inperson",
+      coachingType: formValues?.coachingType,
       locationType: formValues?.locationType,
       Latitude: "73.0330018",
       longitude: "33.6425917",
@@ -118,9 +140,9 @@ const CreatePackage = observer(() => {
       formValues.noSessions !== ""
     ) {
       createPackages(payload).then((res) => {
-        // if (res?.statusCode === 200) {
+        if (res?.statusCode === 200) {
           navigate(constRoute?.home);
-        // }
+        }
       });
     } else {
       const isTitleNull = !formValues?.title;
@@ -147,6 +169,27 @@ const CreatePackage = observer(() => {
       [name]: value,
     });
   };
+
+  console.log("formValues", formValues);
+
+  const coachingTypeList = [
+    {
+      value: "Inperson",
+      label: "Person",
+    },
+    {
+      value: "Insession",
+      label: "Session",
+    },
+    {
+      value: "Ingrouping",
+      label: "Grouping",
+    },
+    {
+      value: "Inclass",
+      label: "Class",
+    },
+  ];
 
   return (
     <div className={style.createPackageContainer}>
@@ -267,6 +310,103 @@ const CreatePackage = observer(() => {
                   </Row>
                 </Col>
 
+                <Col md={12} sm={24} xs={24}>
+                  <FormControl fullWidth>
+                    <TextField
+                      select
+                      fullWidth
+                      name="categoryId"
+                      label="Category"
+                      defaultValue={value}
+                      value={value}
+                      className={outLinedStyle.greyLayout}
+                    >
+                      <div className={style.selectBoxPopupCategories}>
+                        {(isLoadingGettingCategories && (
+                          <div className={style.loaderContainer}>
+                            <Spin />
+                          </div>
+                        )) || (
+                            <Row>
+                              <Col span={24} >
+                              <TextField
+                                id="outlined-basic"
+                                label="Search"
+                                fullWidth
+                                className={style.searchInput}
+                                variant="outlined"
+                              />
+                              </Col>
+                              <Col span={24} >
+
+                              <Radio.Group
+                                onChange={(e) => {
+                                  const event = {
+                                    target: {
+                                      name: "categoryId",
+                                      value: e.target.value,
+                                    },
+                                  };
+                                  setValue(e.target.value);
+                                  handleInputChange(event);
+                                  setErrors({ ...errors, ...{ validity: [] } });
+                                }}
+                                value={value}
+                              >
+                                <Space direction="vertical">
+                                  {getCategoriesData?.length > 0 &&
+                                    getCategoriesData?.map((option) => (
+                                      <Radio value={option?.id}>
+                                        {" "}
+                                        {renderItemDataOrEmptyNull(
+                                          option?.title
+                                        )}{" "}
+                                      </Radio>
+                                    ))}
+                                </Space>
+                              </Radio.Group>
+                              </Col>
+                            </Row>
+                          ) || (
+                            <div className={style.loaderContainer}>
+                              <span>No Data</span>
+                            </div>
+                          )}
+                      </div>
+                    </TextField>
+                  </FormControl>
+                </Col>
+              </Row>
+
+              <p className={style.horizontalLine}></p>
+
+              <Row className={style.coacingAndLocationRow} gutter={40}>
+                <Col md={12} sm={24} xs={24}>
+                  <FormControl fullWidth>
+                    <TextField
+                      select
+                      fullWidth
+                      name="coachingType"
+                      label="Coaching Type"
+                      className={outLinedStyle.greyLayout}
+                      defaultValue="Inperson"
+                      style={{ color: "white" }}
+                      value={formValues?.coachingType}
+                      onChange={(e) => {
+                        handleInputChange(e);
+                        setErrors({ ...errors, ...{ validity: [] } });
+                      }}
+                    >
+                      <div className={style.selectBoxPopup}>
+                        {coachingTypeList.map((option) => (
+                          <MenuItem key={option.value} value={option.value}>
+                            {option.label}
+                          </MenuItem>
+                        ))}
+                      </div>
+                    </TextField>
+                  </FormControl>
+                </Col>
                 <Col md={12} sm={24} xs={24}>
                   <FormInputText
                     className={style.FormStyle}

@@ -1,4 +1,9 @@
 .commonInputStyle {
+  :global(.MuiInputBase-root) {
+    border: 1px solid white;
+    border-radius: 10px;
+  }
+
   :global(.MuiInputLabel-root) {
     color: white;
     margin-bottom: 6px;
@@ -16,11 +21,6 @@
       border: 2px solid white !important;
       z-index: 2;
     }
-  }
-
-  :global(.MuiInputBase-root) {
-    border: 1px solid white;
-    border-radius: 10px;
   }
 
   :global(.MuiInputBase-multiline) {
@@ -58,12 +58,20 @@
 ///////////// greyLayout Input ///////////
 
 .greyLayout {
+  :global(.MuiInputBase-root) {
+    border: 1px solid #6e6e6e;
+    border-radius: 15px;
+  }
+
+  :global(.MuiOutlinedInput-input) {
+    color: white !important;
+  }
+
   :global(.MuiInputLabel-root) {
     color: white;
     margin-bottom: 6px;
     padding: 0px 5px;
     background-color: #242733;
-    font-family: "Cairo";
     z-index: 2;
   }
 
@@ -71,11 +79,6 @@
     color: white;
     background-color: #242733;
     font-size: 18px;
-  }
-
-  :global(.MuiInputBase-root) {
-    border: 1px solid #6e6e6e;
-    border-radius: 15px;
   }
 
   :global(.MuiInputBase-multiline) {
@@ -94,6 +97,10 @@
 
   :global(.MuiInput-root.Mui-error:after) {
     border-bottom-color: #d32f2f;
+  }
+
+  :global(.MuiSelect-iconOutlined) {
+    color: wheat;
   }
 }
 

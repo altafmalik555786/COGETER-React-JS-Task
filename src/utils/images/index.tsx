@@ -8,6 +8,7 @@ import TotalReviewIcon from '@assets/icons/total-reviews.svg'
 import OverallRatingIcon from '@assets/icons/over-all-rating.svg'
 import ProfileAvatar from '@assets/icons/profile-avatar.svg' 
 import MapIcon from '@assets/icons/map-icon.svg'
+import MessageIcon from '@assets/icons/sms-icon.svg'
 
 export const constImages = {
     dropDownIcon: DropDownIcon,
@@ -20,4 +21,5 @@ export const constImages = {
     packageIcon: PackageIcon,
     profileAvatar: ProfileAvatar,
     mapIcon: MapIcon,
+    messageIcon: MessageIcon,
 }

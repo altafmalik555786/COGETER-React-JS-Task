@@ -40,3 +40,9 @@ export const packagesModal = types.model({
   locationDetails: types.maybeNull(locationDetailsModel),
   files: types.maybeNull(types.array(filesModel)),
 });
+
+
+export const categoriesDataModel = types.model({
+  id: types.maybeNull(types.string),
+  title: types.maybeNull(types.string),
+});

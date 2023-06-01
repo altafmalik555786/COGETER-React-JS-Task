@@ -1,7 +1,8 @@
 import { observer } from "mobx-react";
 import { memo, useRef, useEffect, useState } from "react";
 import style from "./style.module.scss";
-import { FieldTimeOutlined, RedEnvelopeOutlined } from "@ant-design/icons";
+import { FieldTimeOutlined } from "@ant-design/icons";
+import { constImages } from "@utils/images";
 
 interface Props {}
 const CommonDashboardCards: React.FC<Props> = observer(({ ...props }) => {
@@ -43,7 +44,7 @@ const CommonDashboardCards: React.FC<Props> = observer(({ ...props }) => {
         </div>
         <hr className={style.hrow} />
         <div className={style.messageWrraper}>
-          <RedEnvelopeOutlined />
+          <img src={constImages?.messageIcon} alt="" />
           <span>Message</span>
         </div>
       </div>

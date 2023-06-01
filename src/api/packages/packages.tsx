@@ -1,5 +1,5 @@
 import axios from "axios";
-import { getAllPackagesUrl } from "../const";
+import { getAllPackagesUrl, getCategoreisUrl } from "../const";
 import { BaseApi } from "../baseApi";
 import { getAuthorizationHeader } from "@api/common-utils";
 import { posPackagesUrl } from "../const";
@@ -42,6 +42,17 @@ class PackageApi extends BaseApi {
   postPackageData = async (data) => {
     try {
       const response = await axios.post(posPackagesUrl, data, {
+        headers: { Authorization: getAuthorizationHeader() },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  getCategoriesData = async () => {
+    try {
+      const response = await axios.get(getCategoreisUrl, {
         headers: { Authorization: getAuthorizationHeader() },
       });
       return response.data;

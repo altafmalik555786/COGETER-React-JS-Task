@@ -96,15 +96,22 @@
       }
 
       .formContainer {
-        :global(.MuiOutlinedInput-input) {
-            &:focus {
-              border: 4px solid #373743;
-              z-index: 1;
-              border-radius: 12px;
-            }
+        padding-top: 50px;
+
+        .horizontalLine {
+          border: 1px solid #6e6e6e;
+          width: 100%;
         }
 
-        padding-top: 50px;
+        :global(.MuiOutlinedInput-input) {
+          color: white !important;
+          &:focus {
+            border: 4px solid #373743;
+            z-index: 1;
+            border-radius: 12px;
+          }
+        }
+
         .createPackageForm {
           .rightText {
             position: absolute;
@@ -116,6 +123,10 @@
 
           :global(.MuiFormControl-root) {
             margin: 10px 0px;
+          }
+
+          .coacingAndLocationRow {
+            align-items: center;
           }
 
           .locationLine {
@@ -140,6 +151,7 @@
               flex-direction: row;
               align-items: center;
               margin-left: 10px;
+              cursor: pointer;
               justify-content: flex-end;
               gap: 10px;
             }
@@ -169,5 +181,60 @@
       }
     }
     /////// Main Content Container End ///////
+  }
+}
+
+:global(.MuiPaper-root) {
+  background-color: transparent !important;
+  box-shadow: none !important ;
+
+  .selectBoxPopup {
+    padding: 25px 20px;
+    background-color: #3b3f4e;
+    color: #ffffff;
+    border-radius: 0px 0px 10px 10px;
+  }
+}
+
+:global(.MuiPaper-root) {
+  background-color: transparent !important;
+  box-shadow: none !important ;
+  height: 320px;
+
+  .selectBoxPopupCategories {
+    min-height: 220px;
+    padding: 25px 20px;
+
+    background-color: #3b3f4e;
+    color: #ffffff;
+    border-radius: 0px 0px 10px 10px;
+
+    :global(.ant-radio-wrapper) {
+      color: white;
+    }
+
+    .loaderContainer {
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .searchInput {
+      background-color: #1D202B;
+      margin-bottom: 20px;
+      border-radius: 12px;
+
+
+      :global(.MuiInputLabel-root) {
+        color: white;
+        background-color: #1D202B;
+        border-radius: 12px;
+      }
+    
+
+    }
+
   }
 }
