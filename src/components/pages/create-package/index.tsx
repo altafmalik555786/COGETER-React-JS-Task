@@ -40,7 +40,7 @@ const defaultValues = {
   validity: "",
   country: "",
   coachingType: "",
-  category: "",
+  categoryId: "",
   city: "",
   area: "",
   addressLine: "",
@@ -53,7 +53,7 @@ const initialServerError = {
   noSessions: [],
   validity: [],
   coachingType: [],
-  category: [],
+  categoryId: [],
   country: [],
   city: [],
   area: [],
@@ -96,15 +96,15 @@ const CreatePackage = observer(() => {
 
     let payload = {
       title: formValues?.title,
-      categoryId: "5cdfca13-0dbe-4d47-acc8-cf06312ea93b",
+      categoryId: formValues?.categoryId,
       description: formValues?.description,
-      totalSession: formValues?.noSessions,
+      totalSession: Number(formValues?.noSessions),
       sessionDuration: 60,
       costPerSession: 100,
-      validity: formValues?.validity,
+      validity: formValues?.validity ? Number(formValues?.validity) : 1,
       discount: 0,
-      coachingType: formValues?.coachingType,
-      locationType: formValues?.locationType,
+      coachingType: formValues?.coachingType || "Inperson",
+      locationType: formValues?.locationType || "coach",
       Latitude: "73.0330018",
       longitude: "33.6425917",
       locationDetails: {
@@ -188,6 +188,7 @@ const CreatePackage = observer(() => {
       label: "Class",
     },
   ];
+
 
   return (
     <div className={style.createPackageContainer}>
@@ -353,8 +354,8 @@ const CreatePackage = observer(() => {
                                         value: e.target.value,
                                       },
                                     };
-                                    setCategoriesValue(e.target.value);
                                     handleInputChange(event);
+                                    setCategoriesValue(e.target.value);
                                     setErrors({
                                       ...errors,
                                       ...{ validity: [] },
