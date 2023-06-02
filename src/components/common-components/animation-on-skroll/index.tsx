@@ -1,3 +1,4 @@
+import { scrollToElement } from "@utils/common-functions";
 import React, { memo, useEffect } from "react";
 
 export interface AnimationOnSkrollPropsTypes {
@@ -9,20 +10,10 @@ export interface AnimationOnSkrollPropsTypes {
 const AnimationOnSkroll = ({
   animationBoxRef,
   setIsVisible,
-  initialSkrollRef = null ,
+  initialSkrollRef = null,
 }: AnimationOnSkrollPropsTypes) => {
-
-
   useEffect(() => {
-
-  // Scroll to a specific element or position when the component mounts
-  const scrollToElement = () => {
-    // Use scrollRef.current to access the DOM element
-    if (initialSkrollRef.current) {
-      initialSkrollRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-  scrollToElement()
+    scrollToElement(initialSkrollRef);
 
     const handleScroll = () => {
       const element = animationBoxRef.current;
@@ -41,13 +32,10 @@ const AnimationOnSkroll = ({
       }
     };
 
-
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-
-
   }, []);
 
   return <div></div>;

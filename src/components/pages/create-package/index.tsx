@@ -1,5 +1,5 @@
 import { Col, Radio, Row, Space, Spin, Steps } from "antd";
-import { memo, useEffect, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import style from "./style.module.scss";
 import useWindowSize from "@utils/hooks/useWindowSize";
 
@@ -30,7 +30,7 @@ import { useNavigate } from "react-router-dom";
 import { constRoute } from "@utils/route";
 import { FormControl, MenuItem, TextField } from "@mui/material";
 import outLinedStyle from "@commonComponents/form-input-text/style.module.scss";
-import { renderItemDataOrEmptyNull } from "@utils/common-functions";
+import { renderItemDataOrEmptyNull, scrollToElement } from "@utils/common-functions";
 
 const defaultValues = {
   title: "",
@@ -68,8 +68,9 @@ const CreatePackage = observer(() => {
   const { width } = useWindowSize();
   const [formValues, setFormValues] = useState(defaultValues);
   const [errors, setErrors] = useState(initialServerError);
-  const [categoriesValue, setCategoriesValue] = useState(null);
-  const [currentCategoriesValue, setCurrentCategoriesValue] = useState("");
+  const [categoriesValue, setCategoriesValue] = useState("ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b");
+  const [currentCategoriesValue, setCurrentCategoriesValue] = useState("All");
+  const topElemmentRef = useRef(null)
 
   const {
     packages: {
@@ -85,6 +86,11 @@ const CreatePackage = observer(() => {
     if (getCategoriesData === null) {
       loadCategories();
     }
+    const initialValues = { ...formValues };
+    initialValues.country = "Pakistan";
+    initialValues.coachingType = "Inperson";
+    initialValues.categoryId = "ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b"
+    setFormValues(initialValues);
   }, []);
 
   const onChange = (value: number) => {
@@ -101,7 +107,7 @@ const CreatePackage = observer(() => {
       totalSession: Number(formValues?.noSessions),
       sessionDuration: 60,
       costPerSession: 100,
-      validity: formValues?.validity ? Number(formValues?.validity) : 1,
+      validity: Number(formValues?.validity),
       discount: 0,
       coachingType: formValues?.coachingType || "Inperson",
       locationType: formValues?.locationType || "coach",
@@ -137,7 +143,13 @@ const CreatePackage = observer(() => {
       formValues.title &&
       formValues.title !== "" &&
       formValues.noSessions &&
-      formValues.noSessions !== ""
+      formValues.noSessions !== "" &&
+      formValues.validity &&
+      formValues.validity !== "" &&
+      formValues.locationType &&
+      formValues.locationType !== "" &&
+      formValues.coachingType &&
+      formValues.coachingType !== ""
     ) {
       createPackages(payload).then((res) => {
         if (res?.statusCode === 200) {
@@ -145,22 +157,23 @@ const CreatePackage = observer(() => {
         }
       });
     } else {
+      scrollToElement(topElemmentRef)
       const isTitleNull = !formValues?.title;
       const isPasswordNull = !formValues?.noSessions;
+      const isValidity = !formValues?.validity;
+      const isLocationType = !formValues?.locationType;
+      const isCoachingType = !formValues.coachingType;
       const errorList = {
         title: isTitleNull ? ["Title field is required"] : [],
         noSessions: isPasswordNull ? ["No. of Sessions field is required"] : [],
+        validity: isValidity ? ["Validity field is required"] : [],
+        locationType: isLocationType ? ["Location Type field is required"] : [],
+        coachingType: isCoachingType ? ["Coaching Type field is required"] : [],
         serverError: "",
       };
       setErrors({ ...errors, ...errorList });
     }
   };
-
-  useEffect(() => {
-    const initialValues = { ...formValues };
-    initialValues.country = "Pakistan";
-    setFormValues(initialValues);
-  }, []);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -189,9 +202,8 @@ const CreatePackage = observer(() => {
     },
   ];
 
-
   return (
-    <div className={style.createPackageContainer}>
+    <div ref={topElemmentRef} className={style.createPackageContainer}>
       <div className={style.createPackageContentFluid}>
         <div className={style.createPackageInnerContentFluid}>
           <Row>
@@ -296,9 +308,11 @@ const CreatePackage = observer(() => {
                       <FormInputText
                         className={style.FormStyle}
                         style={{ position: "relative" }}
+                        onClick={() => {
+                          setErrors({ ...errors, ...{ validity: [] } });
+                        }}
                         onValueChange={(e) => {
                           handleInputChange(e);
-                          setErrors({ ...errors, ...{ validity: [] } });
                         }}
                         value={formValues.validity}
                         name={LOWER_VALIDITY}
@@ -426,6 +440,9 @@ const CreatePackage = observer(() => {
                   <FormInputText
                     className={style.FormStyle}
                     style={{ position: "relative" }}
+                    onClick={() => {
+                      setErrors({ ...errors, ...{ locationType: [] } });
+                    }}
                     onValueChange={(e) => {
                       handleInputChange(e);
                     }}

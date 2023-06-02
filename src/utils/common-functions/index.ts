@@ -82,3 +82,11 @@ export const copyToClipboard = (text) => {
   textField.remove();
   notification.success("copied");
 };
+
+
+export const scrollToElement = (ref) => {
+  // Use scrollRef.current to access the DOM element
+  if (ref.current) {
+    ref.current.scrollIntoView({ behavior: 'smooth' });
+  }
+};
