@@ -18,6 +18,7 @@ export const FormInputText = ({
   size,
   variant,
   onClick,
+  onFocus,
   className,
   colorVariant,
   multiline,
@@ -44,6 +45,7 @@ export const FormInputText = ({
             value={value}
             onChange={onValueChange}
             onClick={onClick}
+            onFocus={onFocus}
           />
         </FormControl>
       ) : (
@@ -69,6 +71,7 @@ export const FormInputText = ({
             value={value}
             onChange={onValueChange}
             onClick={onClick}
+            onFocus={onFocus}
           />
         </FormControl>
       )}

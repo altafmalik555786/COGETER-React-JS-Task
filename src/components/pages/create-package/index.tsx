@@ -30,7 +30,10 @@ import { useNavigate } from "react-router-dom";
 import { constRoute } from "@utils/route";
 import { FormControl, MenuItem, TextField } from "@mui/material";
 import outLinedStyle from "@commonComponents/form-input-text/style.module.scss";
-import { renderItemDataOrEmptyNull, scrollToElement } from "@utils/common-functions";
+import {
+  renderItemDataOrEmptyNull,
+  scrollToElement,
+} from "@utils/common-functions";
 
 const defaultValues = {
   title: "",
@@ -68,9 +71,11 @@ const CreatePackage = observer(() => {
   const { width } = useWindowSize();
   const [formValues, setFormValues] = useState(defaultValues);
   const [errors, setErrors] = useState(initialServerError);
-  const [categoriesValue, setCategoriesValue] = useState("ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b");
+  const [categoriesValue, setCategoriesValue] = useState(
+    "ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b"
+  );
   const [currentCategoriesValue, setCurrentCategoriesValue] = useState("All");
-  const topElemmentRef = useRef(null)
+  const topElemmentRef = useRef(null);
 
   const {
     packages: {
@@ -89,7 +94,7 @@ const CreatePackage = observer(() => {
     const initialValues = { ...formValues };
     initialValues.country = "Pakistan";
     initialValues.coachingType = "Inperson";
-    initialValues.categoryId = "ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b"
+    initialValues.categoryId = "ab3ad9bd-fa4e-4333-89d7-0fcd5f6afa7b";
     setFormValues(initialValues);
   }, []);
 
@@ -157,7 +162,7 @@ const CreatePackage = observer(() => {
         }
       });
     } else {
-      scrollToElement(topElemmentRef)
+      scrollToElement(topElemmentRef);
       const isTitleNull = !formValues?.title;
       const isPasswordNull = !formValues?.noSessions;
       const isValidity = !formValues?.validity;
@@ -237,7 +242,7 @@ const CreatePackage = observer(() => {
                 <Col md={12} sm={24} xs={24}>
                   <Row>
                     <Col
-                      onClick={() => {
+                      onFocus={() => {
                         setErrors({ ...errors, ...{ title: [] } });
                       }}
                       span={24}
@@ -289,7 +294,7 @@ const CreatePackage = observer(() => {
                         name={"noSessions"}
                         label={"No. of Sessions"}
                         variant={LOWER_OUTLINED}
-                        onClick={() => {
+                        onFocus={() => {
                           setErrors({ ...errors, ...{ noSessions: [] } });
                         }}
                         type={LOWER_NUMBER}
@@ -308,7 +313,7 @@ const CreatePackage = observer(() => {
                       <FormInputText
                         className={style.FormStyle}
                         style={{ position: "relative" }}
-                        onClick={() => {
+                        onFocus={() => {
                           setErrors({ ...errors, ...{ validity: [] } });
                         }}
                         onValueChange={(e) => {
@@ -440,7 +445,7 @@ const CreatePackage = observer(() => {
                   <FormInputText
                     className={style.FormStyle}
                     style={{ position: "relative" }}
-                    onClick={() => {
+                    onFocus={() => {
                       setErrors({ ...errors, ...{ locationType: [] } });
                     }}
                     onValueChange={(e) => {
