@@ -129,7 +129,7 @@ const Login = observer(() => {
                     }}
                     value={formValues.email}
                     name={LOWER_EMAIL}
-                    onClick={() => {
+                    onFocus={() => {
                       setErrors({ ...errors, ...{ email: [] } });
                     }}
                     label={"Email"}
@@ -150,7 +150,7 @@ const Login = observer(() => {
                           }}
                           type={passwordType}
                           name={LOWER_PASSWORD}
-                          onClick={() => {
+                          onFocus={() => {
                             setErrors({ ...errors, ...{ password: [] } });
                           }}
                           label={"Password"}
