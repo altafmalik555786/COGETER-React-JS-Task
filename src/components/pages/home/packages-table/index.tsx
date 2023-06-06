@@ -38,9 +38,7 @@ const PackagesTable: React.FC<Props> = observer(
       {
         title: "price per session",
         render: (_, rowData) => {
-          console.log("reow", rowData)
           let pricePerSession = rowData?.grandTotal / rowData?.totalSession
-          console.log("priceSession", pricePerSession)
           return pricePerSession?.toFixed(2)
         },
       },
