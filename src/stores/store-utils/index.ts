@@ -26,7 +26,7 @@ export const packagesModal = types.model({
   sessionDuration: types.maybeNull(types.number),
   costPerSession: types.maybeNull(types.number),
   description: types.maybeNull(types.string),
-  isPublished: types.maybeNull(types.number),
+  isPublished: types.maybeNull(types.boolean),
   grandTotal: types.maybeNull(types.number),
   currency: types.maybeNull(types.string),
   coachingType: types.maybeNull(types.string),

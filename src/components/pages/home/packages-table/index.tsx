@@ -36,13 +36,13 @@ const PackagesTable: React.FC<Props> = observer(
         ),
       },
       {
-        title: "Session details",
-        render: (_, rowData) => (
-          <span>
-            {renderItemDataOrEmptyNull(rowData?.totalSession)} session-
-            {renderItemDataOrEmptyNull(rowData?.sessionDuration)} min/each
-          </span>
-        ),
+        title: "price per session",
+        render: (_, rowData) => {
+          console.log("reow", rowData)
+          let pricePerSession = rowData?.grandTotal / rowData?.totalSession
+          console.log("priceSession", pricePerSession)
+          return pricePerSession?.toFixed(2)
+        },
       },
       {
         title: CAP_STATUS,

@@ -20,6 +20,7 @@ export const catchError = (
   at = "Mention Store Action Name To Track Error At:"
 ) => {
   console.log(`======================= Start =========================`);
+  console.log("error", error)
   const { status, data } = error.response;
   console.log("At:", at, " | status: ", status, `| error data: `, data);
   if (status === 401 || status === 400 || status === 422) {
